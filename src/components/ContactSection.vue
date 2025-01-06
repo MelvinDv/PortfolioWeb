@@ -164,10 +164,10 @@ export default {
       this.loadingForm = true;
       emailjs
         .send(
-          "service_57cec8c",
-          "template_xbkftxg",
+          process.env.VUE_APP_SERVICE_ID,
+          process.env.VUE_APP_TEMPLATE_ID,
           this.form,
-          "66edDB1GVsv4zq1Gw"
+          process.env.VUE_APP_USER_ID
         )
         .then(
           (response) => {
