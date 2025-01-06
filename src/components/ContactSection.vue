@@ -179,7 +179,7 @@ export default {
               icon: "success",
               text: "Message sent successfully!",
               showConfirmButton: false,
-              timer: 1500,
+              timer: 2500,
               backdrop: false,
               customClass: {
                 popup: "containerSweetAlert",
