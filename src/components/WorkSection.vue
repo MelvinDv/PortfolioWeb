@@ -18,11 +18,10 @@
           class="work-cards"
           :style="$vuetify.breakpoint.xs ? 'place-items: center;' : ''"
         >
-          <v-hover v-slot="{ hover, props }">
+          <v-hover v-slot:default="{ hover }">
             <v-card
               class="d-flex content-card elevation-0 mb-2"
               @click="openWork(card)"
-              v-bind="props"
             >
               <div
                 :class="{
