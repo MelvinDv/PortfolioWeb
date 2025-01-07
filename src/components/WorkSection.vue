@@ -18,10 +18,11 @@
           class="work-cards"
           :style="$vuetify.breakpoint.xs ? 'place-items: center;' : ''"
         >
-          <v-hover v-slot="{ hover }">
+          <v-hover v-slot="{ hover, props }">
             <v-card
               class="d-flex content-card elevation-0 mb-2"
               @click="openWork(card)"
+              v-bind="props"
             >
               <div
                 :class="{
@@ -185,7 +186,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 .section-title {
   font-size: 128px;
   font-weight: bold;
