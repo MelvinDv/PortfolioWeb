@@ -41,7 +41,7 @@
         <v-img
           class="img-face"
           height="200"
-          src="../assets/icons/face_1.png"
+          src="../assets/icons/face_1.webp"
         ></v-img>
       </v-sheet>
 
@@ -96,6 +96,10 @@ export default {
 .background-container {
   width: 100%;
   height: 100%;
+}
+
+.theme--light.v-sheet {
+  background-color: transparent;
 }
 
 .text-marquee {

@@ -5,6 +5,7 @@ import store from "./store";
 import vuetify from "./plugins/vuetify";
 import VueScrollTo from "vue-scrollto";
 import "font-awesome/css/font-awesome.css";
+import "vuetify/dist/vuetify.min.css";
 
 Vue.use(VueScrollTo, {
   duration: 800, // Duración del scroll en milisegundos

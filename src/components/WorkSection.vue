@@ -18,52 +18,54 @@
           class="work-cards"
           :style="$vuetify.breakpoint.xs ? 'place-items: center;' : ''"
         >
-          <v-hover v-slot:default="{ hover }">
-            <v-card
-              class="d-flex content-card elevation-0 mb-2"
-              @click="openWork(card)"
+          <v-card
+            class="d-flex content-card elevation-0 mb-2"
+            @mouseenter="hoverCard = i"
+            @mouseleave="hoverCard = null"
+            @click="openWork(card)"
+          >
+            <div
+              :class="{
+                'img-container rounded-lg': true,
+                'zoom-img': hoverCard === i,
+              }"
+              :style="{
+                backgroundImage: `url(${card.img})`,
+              }"
             >
               <div
-                :class="{
-                  'img-container rounded-lg': true,
-                  'zoom-img': hover,
-                }"
-                :style="{
-                  backgroundImage: `url(${card.img})`,
-                }"
+                :class="
+                  hoverCard === i
+                    ? 'container-info'
+                    : 'container-info opacity-info'
+                "
+                style="min-height: 250px"
               >
-                <div
-                  :class="
-                    hover ? 'container-info' : 'container-info opacity-info'
-                  "
-                  style="min-height: 250px"
-                >
-                  <div class="d-flex mb-1">
-                    <p
-                      class="card-year font-weight-black grey--text text--lighten-3 mb-0 mx-2"
-                    >
-                      {{ card.year }}
-                    </p>
-                    <p class="card-title font-weight-black white--text mb-0">
-                      {{ card.title }}
-                    </p>
-                  </div>
+                <div class="d-flex mb-1">
+                  <p
+                    class="card-year font-weight-black grey--text text--lighten-3 mb-0 mx-2"
+                  >
+                    {{ card.year }}
+                  </p>
+                  <p class="card-title font-weight-black white--text mb-0">
+                    {{ card.title }}
+                  </p>
+                </div>
 
-                  <div class="d-flex">
-                    <v-chip
-                      small
-                      v-for="chip in card.tech"
-                      :key="chip.id"
-                      :text-color="chip.color"
-                      class="ml-2"
-                      :color="chip.background"
-                      >{{ chip.name }}</v-chip
-                    >
-                  </div>
+                <div class="d-flex">
+                  <v-chip
+                    small
+                    v-for="chip in card.tech"
+                    :key="chip.id"
+                    :text-color="chip.color"
+                    class="ml-2"
+                    :color="chip.background"
+                    >{{ chip.name }}</v-chip
+                  >
                 </div>
               </div>
-            </v-card>
-          </v-hover>
+            </div>
+          </v-card>
         </div>
       </v-container>
     </section>
@@ -117,9 +119,9 @@
 </template>
 
 <script>
-import workPsico from "@/assets/images/workPsico.png";
-import imgPsicoEdgarTejo from "@/assets/images/edgarTrejoImg_1.png";
-import imgPsicoEdgarTrejoFull from "@/assets/images/edgarTrejoImgFull.png";
+import workPsico from "@/assets/images/workPsico.webp";
+import imgPsicoEdgarTejo from "@/assets/images/edgarTrejoImg_1.webp";
+import imgPsicoEdgarTrejoFull from "@/assets/images/edgarTrejoImgFull.webp";
 
 export default {
   name: "WorkSection",
@@ -161,6 +163,7 @@ export default {
         ],
       },
     ],
+    hoverCard: null,
     dialogProject: false,
     workSelected: null,
   }),

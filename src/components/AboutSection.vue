@@ -47,7 +47,7 @@
             <v-img
               class="img-face-about"
               height="200"
-              src="../assets/icons/face_2.png"
+              src="../assets/icons/face_2.webp"
             ></v-img>
           </div>
         </v-sheet>

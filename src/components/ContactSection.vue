@@ -63,7 +63,7 @@
             contain
             class="img-face-contact"
             height="250"
-            src="../assets/icons/face_3.png"
+            src="../assets/icons/face_3.webp"
           >
             <div>
               <p class="mb-0">Got a project?</p>
