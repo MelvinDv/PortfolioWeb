@@ -78,13 +78,14 @@
             collaborated with recognized Mexican streamers—has sharpened my eye
             for detail and design. This unique skill set helps me craft digital
             experiences that are not only functional but also visually engaging.
-            If you're curious to see more
+            View my
             <a
               href="https://www.behance.net/KryspiDv/projects"
               target="_blank"
-              class="green--text text--darken-3 link-text"
-              >click here</a
-            >! <br />
+              class="green--text text--darken-3 link-text font-weight-bold"
+              >portfolio as a video editor.</a
+            >
+            <br />
             <br />
 
             I thrive on challenges and am always eager to learn new technologies
