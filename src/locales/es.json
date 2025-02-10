@@ -1,0 +1,29 @@
+{
+    "about": "Sobre m\u00ED",
+    "contact": "Contactame",
+    "description": {
+        "paragraph_1": "Hola! soy Melvin, soy desarrollador front-end de 23 años. Me apasiona el diseño web y me especializo en crear interfaces minimalistas, responsivas y f\u00E1ciles de usar con transiciones suaves. Mi conjunto de habilidades incluye tecnolog\u00EDas como HTML, CSS, JavaScript, Vue, Vuetify, Node.js, Figma y Git, que utilizo para dar vida a las ideas digitales.",
+        "paragraph_2": "Tengo amplia experiencia en el desarrollo de plataformas web desde cero, partiendo de maquetas y transform\u00E1ndolas en interfaces funcionales y visualmente atractivas. Por ejemplo, he trabajado en plataformas para gestionar flotas de veh\u00EDculos, incorporando funciones como la programaci\u00f3n de rutas, el seguimiento en tiempo real y la visualizaci\u00f3n de datos, todo ello diseñado para ofrecer una experiencia de usuario fluida. Adem\u00E1s de plataformas, tambi\u00E9n creo landing pages para clientes que buscan expandir sus marcas o negocios. Mi objetivo es siempre ofrecer soluciones que reflejen su visi\u00f3n, garantizando al mismo tiempo la accesibilidad y el atractivo est\u00E9tico.",
+        "paragraph_3": "M\u00E1s all\u00E1 del desarrollo, mi experiencia como editor de video habiendo colaborado con reconocidos streamers mexicanos ha agudizado mi ojo para el detalle y el diseño. Este conjunto \u00FAnico de habilidades me ayuda a crear experiencias digitales que no s\u00f3lo son funcionales, sino también visualmente atractivas. Ver mi",
+        "paragraph_4": "portfolio como editor de v\u00EDdeo",
+        "paragraph_5": "Me gustan los retos y siempre estoy dispuesto a aprender nuevas tecnolog\u00EDas y frameworks para mantenerme a la vanguardia del sector. Mi compromiso con la excelencia y la mejora continua me impulsa a ofrecer los mejores resultados en cada proyecto que asumo."
+    },
+    "email": "Su Correo Electronico",
+    "experience": "Experiencia",
+    "full-version": "Versi\u00f3n Completa",
+    "got-project": "\u00BFTienes un proyecto?",
+    "hi":"Hola, soy",
+    "invalid-email": "Correo Electronico Invalido",
+    "lets-talk": "\u00A1Hablemos!",
+    "message": "Mensaje",
+    "msg-error": "\u00A1Error! Intentalo de nuevo más tarde",
+    "msg-sent": "\u00A1Mensaje enviado exitosamente!",
+    "name": "Nombre",
+    "require": "Campo Requerido",
+    "send": "Enviar",
+    "work": "Trabajo",
+    "works": {
+        "landing_page_1": "Desc"
+    },
+    "write-name": "Escriba su nombre"
+}

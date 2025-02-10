@@ -39,6 +39,7 @@
     <v-sheet class="body-container">
       <v-sheet class="header-img-container">
         <v-img
+          data-aos="fade-up"
           class="img-face"
           height="200"
           src="../assets/icons/face_1.webp"
@@ -57,7 +58,7 @@
             'text-start': !$vuetify.breakpoint.xs,
           }"
         >
-          Hi, I'm
+          {{ $t("hi") }}
         </p>
 
         <p

@@ -13,17 +13,17 @@
         <span
           class="font-weight-medium toolbarStyle"
           @click="$scrollTo('#work')"
-          >Work</span
+          >{{ $t("work") }}</span
         >
         <span
           class="ml-4 font-weight-medium toolbarStyle"
           @click="$scrollTo('#about')"
-          >About</span
+          >{{ $t("about") }}</span
         >
         <span
           class="ml-4 font-weight-medium toolbarStyle"
           @click="$scrollTo('#contact')"
-          >Contact Me</span
+          >{{ $t("contact") }}</span
         >
       </div>
 
@@ -63,6 +63,29 @@
           >
         </div>
       </v-navigation-drawer>
+
+      <v-btn
+        @click="changeLang('es')"
+        dense
+        depressed
+        rounded
+        :color="$i18n.locale == 'es' ? 'green darken-4' : 'transparent'"
+        :class="{
+          'ml-5': true,
+          'mr-1': true,
+          'grey--text text--darken-4': $i18n.locale == 'en',
+        }"
+        >ES</v-btn
+      >
+      <v-btn
+        @click="changeLang('en')"
+        dense
+        depressed
+        rounded
+        :color="$i18n.locale == 'en' ? 'green darken-4' : 'transparent'"
+        :class="$i18n.locale == 'en' ? '' : 'grey--text text--darken-4'"
+        >EN</v-btn
+      >
     </v-app-bar>
 
     <v-main style="width: 100vw; max-width: 100vw; min-width: 100vw">
@@ -82,11 +105,18 @@ export default {
 
   created() {
     window.home = this;
+    const userLang = localStorage.getItem("userLang") || "en";
+    this.$i18n.locale = userLang;
   },
 
   methods: {
     openDrawer() {
       this.drawer = !this.drawer;
+    },
+
+    changeLang(lng) {
+      this.$i18n.locale = lng;
+      localStorage.setItem("userLang", lng);
     },
   },
 };

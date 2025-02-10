@@ -2,26 +2,30 @@
   <section id="contact">
     <v-container>
       <p
+        data-aos="fade-up"
         :class="
-          $vuetify.breakpoint.xs
+          $vuetify.breakpoint.smAndDown
             ? 'section-title-contact-responsive'
             : 'section-title-contact'
         "
       >
-        CONTACT ME
+        {{ $t("contact").toUpperCase() }}
       </p>
 
-      <v-row v-if="!$vuetify.breakpoint.xs" no-gutters>
-        <v-col cols="3"></v-col>
-        <v-col cols="6">
+      <v-row no-gutters>
+        <v-col v-if="!$vuetify.breakpoint.smAndDown" cols="3"></v-col>
+        <v-col :cols="$vuetify.breakpoint.smAndDown ? 12 : 6">
           <v-form @submit.prevent="validateForm" v-model="isFormValid">
             <div class="d-flex jusfify-center align-center flex-column">
-              <v-sheet class="pa-4" width="500">
+              <v-sheet
+                class="pa-4"
+                :width="$vuetify.breakpoint.smAndDown ? '100%' : '500px'"
+              >
                 <v-text-field
                   v-model="form.name"
                   dense
-                  label="Name"
-                  placeholder="Write your name"
+                  :label="$t('name')"
+                  :placeholder="$t('write-name')"
                   outlined
                   :rules="[rules.required]"
                 ></v-text-field>
@@ -29,7 +33,7 @@
                 <v-text-field
                   v-model="form.email"
                   dense
-                  label="Your Email"
+                  :label="$t('email')"
                   placeholder="example@gmail.com"
                   outlined
                   :rules="[rules.required, rules.email]"
@@ -40,7 +44,7 @@
                   dense
                   outlined
                   name="input-7-4"
-                  label="Message"
+                  :label="$t('message')"
                   :rules="[rules.required]"
                 ></v-textarea>
 
@@ -52,72 +56,27 @@
                   block
                   depressed
                   color="green darken-4 mt-2"
-                  >Submit</v-btn
+                  >{{ $t("send") }}</v-btn
                 >
               </v-sheet>
             </div>
           </v-form>
         </v-col>
-        <v-col cols="3">
+        <v-col v-if="!$vuetify.breakpoint.smAndDown" cols="3">
           <v-img
+            data-aos="zoom-in"
             contain
             class="img-face-contact"
             height="250"
             src="../assets/icons/face_3.webp"
           >
             <div>
-              <p class="mb-0">Got a project?</p>
-              <p class="mb-0">Let's Talk!</p>
+              <p class="mb-0">{{ $t("got-project") }}</p>
+              <p class="mb-0">{{ $t("lets-talk") }}</p>
             </div>
           </v-img>
         </v-col>
       </v-row>
-
-      <div v-if="$vuetify.breakpoint.xs">
-        <v-form @submit.prevent="validateForm" v-model="isFormValid">
-          <div class="d-flex jusfify-center align-center flex-column">
-            <v-sheet class="pa-4" width="100%">
-              <v-text-field
-                v-model="form.name"
-                dense
-                label="Name"
-                placeholder="Write your name"
-                outlined
-                :rules="[rules.required]"
-              ></v-text-field>
-
-              <v-text-field
-                v-model="form.email"
-                dense
-                label="Your Email"
-                placeholder="example@gmail.com"
-                outlined
-                :rules="[rules.required, rules.email]"
-              ></v-text-field>
-
-              <v-textarea
-                v-model="form.message"
-                dense
-                outlined
-                name="input-7-4"
-                label="Message"
-                :rules="[rules.required]"
-              ></v-textarea>
-
-              <v-btn
-                :loading="loadingForm"
-                :disabled="loadingForm || !isFormValid || sentMessage"
-                type="submit"
-                class="white--text"
-                block
-                depressed
-                color="green darken-4 mt-2"
-                >Submit</v-btn
-              >
-            </v-sheet>
-          </div>
-        </v-form>
-      </div>
     </v-container>
   </section>
 </template>
@@ -140,14 +99,18 @@ export default {
     },
     sentMessage: false,
 
-    rules: {
-      required: (value) => !!value || "Required Field",
+    rules: {},
+  }),
+
+  created() {
+    this.rules = {
+      required: (value) => !!value || this.$t("require"),
       email: (value) => {
         const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return pattern.test(value) || "Invalid Email";
+        return pattern.test(value) || this.$t("invalid-email");
       },
-    },
-  }),
+    };
+  },
 
   watch: {
     sentMessage() {
@@ -177,7 +140,7 @@ export default {
             Swal.fire({
               position: this.$vuetify.breakpoint.xs ? "bottom" : "bottom-end",
               icon: "success",
-              text: "Message sent successfully!",
+              text: this.$t("msg-sent"),
               showConfirmButton: false,
               timer: 2500,
               backdrop: false,
@@ -189,15 +152,13 @@ export default {
             });
             this.sentMessage = true;
           },
-          (error) => {
-            console.log("FAILED...", error);
+          () => {
             this.loadingForm = false;
-            //Error! try again later
 
             Swal.fire({
               position: this.$vuetify.breakpoint.xs ? "bottom" : "bttom-end",
               icon: "error",
-              text: "Error! try again later",
+              text: this.$t("msg-error"),
               showConfirmButton: false,
               timer: 2500,
               backdrop: false,
@@ -230,7 +191,7 @@ export default {
 }
 
 .section-title-contact-responsive {
-  font-size: 4.8rem;
+  font-size: 3.5rem;
   font-weight: bold;
   color: #212121;
   margin-bottom: 0px;
