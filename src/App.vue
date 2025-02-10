@@ -9,7 +9,7 @@
 
       <v-spacer></v-spacer>
 
-      <div v-if="!$vuetify.breakpoint.xs" class="d-flex">
+      <div v-if="!$vuetify.breakpoint.xs" class="d-flex align-center">
         <span
           class="font-weight-medium toolbarStyle"
           @click="$scrollTo('#work')"
@@ -24,6 +24,29 @@
           class="ml-4 font-weight-medium toolbarStyle"
           @click="$scrollTo('#contact')"
           >{{ $t("contact") }}</span
+        >
+
+        <v-btn
+          @click="changeLang('es')"
+          dense
+          depressed
+          rounded
+          :color="$i18n.locale == 'es' ? 'green darken-4' : 'transparent'"
+          :class="{
+            'ml-5': true,
+            'mr-1': true,
+            'grey--text text--darken-4': $i18n.locale == 'en',
+          }"
+          >ES</v-btn
+        >
+        <v-btn
+          @click="changeLang('en')"
+          dense
+          depressed
+          rounded
+          :color="$i18n.locale == 'en' ? 'green darken-4' : 'transparent'"
+          :class="$i18n.locale == 'en' ? '' : 'grey--text text--darken-4'"
+          >EN</v-btn
         >
       </div>
 
@@ -61,31 +84,33 @@
             @click="$scrollTo('#contact')"
             >Contact Me</span
           >
+
+          <div class="d-flex justify-center align-center mb-2">
+            <v-btn
+              @click="changeLang('es')"
+              dense
+              depressed
+              rounded
+              :color="$i18n.locale == 'es' ? 'green darken-4' : 'transparent'"
+              :class="{
+                'ml-5': true,
+                'mr-1': true,
+                'grey--text text--darken-4': $i18n.locale == 'en',
+              }"
+              >ES</v-btn
+            >
+            <v-btn
+              @click="changeLang('en')"
+              dense
+              depressed
+              rounded
+              :color="$i18n.locale == 'en' ? 'green darken-4' : 'transparent'"
+              :class="$i18n.locale == 'en' ? '' : 'grey--text text--darken-4'"
+              >EN</v-btn
+            >
+          </div>
         </div>
       </v-navigation-drawer>
-
-      <v-btn
-        @click="changeLang('es')"
-        dense
-        depressed
-        rounded
-        :color="$i18n.locale == 'es' ? 'green darken-4' : 'transparent'"
-        :class="{
-          'ml-5': true,
-          'mr-1': true,
-          'grey--text text--darken-4': $i18n.locale == 'en',
-        }"
-        >ES</v-btn
-      >
-      <v-btn
-        @click="changeLang('en')"
-        dense
-        depressed
-        rounded
-        :color="$i18n.locale == 'en' ? 'green darken-4' : 'transparent'"
-        :class="$i18n.locale == 'en' ? '' : 'grey--text text--darken-4'"
-        >EN</v-btn
-      >
     </v-app-bar>
 
     <v-main style="width: 100vw; max-width: 100vw; min-width: 100vw">
@@ -143,6 +168,7 @@ export default {
 
 .v-navigation-drawer--right.v-navigation-drawer--is-mobile {
   min-height: fit-content;
+  height: fit-content !important;
   top: 40px !important;
   width: 100vw !important;
   box-shadow: none !important;
