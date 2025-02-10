@@ -206,7 +206,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .section-title {
   font-size: 128px;
   font-weight: bold;
