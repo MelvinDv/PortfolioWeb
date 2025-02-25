@@ -14,8 +14,9 @@
           {{ $t("work").toUpperCase() }}
         </p>
 
-        <div
-          v-for="(card, i) in cards"
+        <v-hover
+          v-slot="{ hover }"
+          v-for="card in cards"
           :key="card.id"
           class="work-cards"
           :style="$vuetify.breakpoint.xs ? 'place-items: center;' : ''"
@@ -23,25 +24,16 @@
           <v-card
             data-aos="fade-up"
             class="d-flex content-card elevation-0 mb-2"
-            @mouseenter="setHover(i)"
-            @mouseleave="unsetHover(i)"
             @click="openWork(card)"
           >
             <div
-              :class="[
-                'img-container rounded-lg',
-                { 'zoom-img': card.isHovered },
-              ]"
+              :class="['img-container rounded-lg', { 'zoom-img': hover }]"
               :style="{
                 backgroundImage: `url(${card.img})`,
               }"
             >
               <div
-                :class="
-                  card.isHovered
-                    ? 'container-info'
-                    : 'container-info opacity-info'
-                "
+                :class="['container-info', { 'opacity-info': !hover }]"
                 style="min-height: 250px"
               >
                 <div class="d-flex mb-1">
@@ -69,7 +61,7 @@
               </div>
             </div>
           </v-card>
-        </div>
+        </v-hover>
       </v-container>
     </section>
 
@@ -226,10 +218,8 @@ export default {
             id: 4,
           },
         ],
-        isHovered: false,
       },
     ],
-    hoverCard: null,
     dialogProject: false,
     workSelected: null,
     tab: null,
