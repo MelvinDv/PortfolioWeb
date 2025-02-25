@@ -73,70 +73,111 @@
       </v-container>
     </section>
 
-    <v-dialog
+    <v-bottom-sheet
       v-model="dialogProject"
-      width="800"
       :fullscreen="$vuetify.breakpoint.xs"
-      eager
-      persistent
+      scrollable
     >
-      <v-card>
-        <v-card-title class="fixed-header-card white">
-          <span class="text-h5">{{
-            workSelected != null ? workSelected.title : ""
-          }}</span>
-
-          <v-spacer></v-spacer>
-
+      <v-card class="rounded-xxl-b-0">
+        <v-card-title class="d-flex justify-end">
           <v-btn icon dark @click="closeWork()">
             <v-icon color="#242424">mdi-close</v-icon>
           </v-btn>
         </v-card-title>
 
-        <v-card-text class="overflow-auto">
-          <v-img
-            v-if="workSelected != null"
-            class="mb-5 rounded-xxl"
-            :src="workSelected.images[1]"
-            max-height="400"
-            max-width="800"
-          ></v-img>
+        <v-card-text>
+          <div class="d-flex flex-column justify-center">
+            <span
+              class="text-h4 text-center font-weight-bold grey--text text--darken-4"
+              >{{ workSelected?.title.toUpperCase() }}</span
+            >
 
-          <p
-            v-html="
-              workSelected != null
-                ? $i18n.locale == 'en'
-                  ? workSelected.desc
-                  : workSelected.desc_esp
-                : ''
-            "
-            class="text-justify px-3"
-          ></p>
+            <span
+              class="font-weight-medium grey--text text--darken-3 text-center mb-2"
+            >
+              - {{ workSelected?.subtitle }} -
+            </span>
 
-          <p
-            class="text-h5 font-weight-bold text-center grey--text text--darken-4"
-          >
-            {{ $t("full-version") }}
-          </p>
+            <div class="d-flex justify-center mb-4">
+              <v-chip
+                small
+                v-for="chip in workSelected?.tech"
+                :key="chip.id"
+                :text-color="chip.color"
+                class="ml-2"
+                :color="chip.background"
+                >{{ chip.name }}</v-chip
+              >
+            </div>
+          </div>
 
-          <v-img
-            v-if="workSelected != null"
-            class="mt-5 rounded-xxl"
-            :src="workSelected.images[0]"
-            max-width="800"
-            contain
-          >
-          </v-img>
+          <div class="d-flex flex-column justify-center align-center">
+            <v-img
+              v-if="workSelected != null"
+              class="mb-5 rounded-xxl"
+              :src="workSelected.images[1]"
+              :max-width="$vuetify.breakpoint.smAndDown ? '100%' : '800px'"
+            ></v-img>
+
+            <p
+              v-html="
+                workSelected != null
+                  ? $i18n.locale == 'en'
+                    ? workSelected.desc
+                    : workSelected.desc_esp
+                  : ''
+              "
+              class="text-justify px-3"
+              style="max-width: 800px"
+            ></p>
+          </div>
+
+          <v-tabs v-model="tab" color="green darken-4" centered fixed-tabs>
+            <v-tabs-slider color="green darken-4"></v-tabs-slider>
+
+            <v-tab> Web </v-tab>
+            <v-tab> {{ $t("mobile") }} </v-tab>
+          </v-tabs>
+
+          <v-tabs-items v-model="tab">
+            <v-tab-item>
+              <v-img
+                v-if="workSelected != null"
+                class="mt-5 rounded-xxl"
+                :src="workSelected.images[0]"
+                contain
+                width="100%"
+                :height="$vuetify.breakpoint.smAndDown ? '520px' : '100%'"
+                max-height="800px"
+                style="aspect-ratio: 16/9"
+              >
+              </v-img>
+            </v-tab-item>
+
+            <v-tab-item>
+              <v-img
+                v-if="workSelected != null"
+                class="mt-5 rounded-xxl"
+                :src="workSelected.images[2]"
+                width="100%"
+                :max-width="$vuetify.breakpoint.smAndDown ? '320px' : '100%'"
+                height="auto"
+                style="object-fit: contain"
+              >
+              </v-img>
+            </v-tab-item>
+          </v-tabs-items>
         </v-card-text>
       </v-card>
-    </v-dialog>
+    </v-bottom-sheet>
   </div>
 </template>
 
 <script>
 import workPsico from "@/assets/images/workPsico.webp";
 import imgPsicoEdgarTejo from "@/assets/images/edgarTrejoImg_1.webp";
-import imgPsicoEdgarTrejoFull from "@/assets/images/edgarTrejoImgFull.webp";
+import imgPsicoEdgarTrejoFullMobile from "@/assets/images/edgar-mobile.webp";
+import imgPsicoEdgarTrejoFullWeb from "@/assets/images/edgar-web.webp";
 
 export default {
   name: "WorkSection",
@@ -144,7 +185,8 @@ export default {
   data: () => ({
     cards: [
       {
-        title: "Landing Page - Edgar Trejo",
+        title: "Edgar Trejo",
+        subtitle: "Landing Page",
         shortTitle: "Langing Page",
         year: 2024,
         img: workPsico,
@@ -152,7 +194,11 @@ export default {
 <br> <br> The design was fully optimized for different devices, ensuring a seamless experience whether accessed on mobile, tablet, or desktop. Leveraging technologies like HTML, CSS, JavaScript, Vue.js, and Vuetify, I built a scalable and efficient structure that aligns with modern web development standards. This project allowed me to demonstrate my ability to understand a client's vision, translate it into a functional digital product, and create a meaningful online presence for specialized professional services.`,
         desc_esp: `Diseñé y desarrollé una landing page totalmente responsiva para un psicólogo especializado en servicios de salud mental y bienestar emocional.  El objetivo era crear una plataforma acogedora y profesional que pudiera comunicar eficazmente la experiencia del psicólogo y, al mismo tiempo, animar a los clientes potenciales a ponerse en contacto. Para lograrlo, apliqué un enfoque de diseño centrado en el usuario, centrándome en una estética limpia y un diseño intuitivo que inspira confianza y comodidad. La landing page cuenta con elementos clave como descripciones de servicios, un formulario de contacto y llamadas a la acción estratégicamente situadas para maximizar el compromiso del usuario e impulsar las conversiones.
         <br> <br> El diseño se optimizó completamente para diferentes dispositivos, garantizando una experiencia fluida tanto si se accede desde un móvil, una tableta o una PC. Aprovechando tecnologías como HTML, CSS, JavaScript, Vue.js y Vuetify, construí una estructura escalable y eficiente que se alinea con los estándares modernos de desarrollo web. Este proyecto me permitió demostrar mi capacidad para entender la visión de un cliente, traducirla en un producto digital funcional y crear una presencia en línea significativa para servicios profesionales especializados.`,
-        images: [imgPsicoEdgarTrejoFull, imgPsicoEdgarTejo],
+        images: [
+          imgPsicoEdgarTrejoFullWeb,
+          imgPsicoEdgarTejo,
+          imgPsicoEdgarTrejoFullMobile,
+        ],
         tech: [
           {
             name: "Vue.js",
@@ -184,6 +230,7 @@ export default {
     hoverCard: null,
     dialogProject: false,
     workSelected: null,
+    tab: null,
   }),
 
   created() {
@@ -276,5 +323,11 @@ export default {
   position: sticky;
   z-index: 200;
   top: 0;
+}
+
+/*TABS*/
+.theme--light.v-tabs-items {
+  display: flex;
+  justify-content: center;
 }
 </style>
