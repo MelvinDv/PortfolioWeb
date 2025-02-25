@@ -16,29 +16,29 @@
 
         <div
           v-for="(card, i) in cards"
-          :key="i"
+          :key="card.id"
           class="work-cards"
           :style="$vuetify.breakpoint.xs ? 'place-items: center;' : ''"
         >
           <v-card
             data-aos="fade-up"
             class="d-flex content-card elevation-0 mb-2"
-            @mouseenter="hoverCard = i"
-            @mouseleave="hoverCard = null"
+            @mouseenter="setHover(i)"
+            @mouseleave="unsetHover(i)"
             @click="openWork(card)"
           >
             <div
-              :class="{
-                'img-container rounded-lg': true,
-                'zoom-img': hoverCard === i,
-              }"
+              :class="[
+                'img-container rounded-lg',
+                { 'zoom-img': card.isHovered },
+              ]"
               :style="{
                 backgroundImage: `url(${card.img})`,
               }"
             >
               <div
                 :class="
-                  hoverCard === i
+                  card.isHovered
                     ? 'container-info'
                     : 'container-info opacity-info'
                 "
@@ -185,6 +185,7 @@ export default {
   data: () => ({
     cards: [
       {
+        id: 1,
         title: "Edgar Trejo",
         subtitle: "Landing Page",
         shortTitle: "Langing Page",
@@ -225,6 +226,7 @@ export default {
             id: 4,
           },
         ],
+        isHovered: false,
       },
     ],
     hoverCard: null,
@@ -241,13 +243,21 @@ export default {
     openWork(item) {
       this.dialogProject = true;
 
-      console.log("THIS IS THE PROJECT SELECTED", item);
+      //console.log("THIS IS THE PROJECT SELECTED", item);
       this.workSelected = item;
     },
 
     closeWork() {
       this.dialogProject = false;
       this.workSelected = null;
+    },
+
+    setHover(index) {
+      this.cards[index].isHovered = true;
+    },
+
+    unsetHover(index) {
+      this.cards[index].isHovered = false;
     },
   },
 };
