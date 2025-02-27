@@ -14,54 +14,54 @@
           {{ $t("work").toUpperCase() }}
         </p>
 
-        <v-hover
-          v-slot="{ hover }"
-          v-for="card in cards"
-          :key="card.id"
-          class="work-cards"
-          :style="$vuetify.breakpoint.xs ? 'place-items: center;' : ''"
-        >
-          <v-card
-            data-aos="fade-up"
-            class="d-flex content-card elevation-0 mb-2"
-            @click="openWork(card)"
+        <div v-for="card in cards" :key="card.id">
+          <v-hover
+            v-slot="{ hover }"
+            class="work-cards"
+            :style="$vuetify.breakpoint.xs ? 'place-items: center;' : ''"
           >
-            <div
-              :class="['img-container rounded-lg', { 'zoom-img': hover }]"
-              :style="{
-                backgroundImage: `url(${card.img})`,
-              }"
+            <v-card
+              data-aos="fade-up"
+              class="d-flex content-card elevation-0 mb-2"
+              @click="openWork(card)"
             >
               <div
-                :class="['container-info', { 'opacity-info': !hover }]"
-                style="min-height: 250px"
+                :class="['img-container rounded-lg', { 'zoom-img': hover }]"
+                :style="{
+                  backgroundImage: `url(${card.img})`,
+                }"
               >
-                <div class="d-flex mb-1">
-                  <p
-                    class="card-year font-weight-black grey--text text--lighten-3 mb-0 mx-2"
-                  >
-                    {{ card.year }}
-                  </p>
-                  <p class="card-title font-weight-black white--text mb-0">
-                    {{ card.shortTitle }}
-                  </p>
-                </div>
+                <div
+                  :class="['container-info', { 'opacity-info': !hover }]"
+                  style="min-height: 250px"
+                >
+                  <div class="d-flex mb-1">
+                    <p
+                      class="card-year font-weight-black grey--text text--lighten-3 mb-0 mx-2"
+                    >
+                      {{ card.year }}
+                    </p>
+                    <p class="card-title font-weight-black white--text mb-0">
+                      {{ card.shortTitle }}
+                    </p>
+                  </div>
 
-                <div class="d-flex">
-                  <v-chip
-                    small
-                    v-for="chip in card.tech"
-                    :key="chip.id"
-                    :text-color="chip.color"
-                    class="ml-2"
-                    :color="chip.background"
-                    >{{ chip.name }}</v-chip
-                  >
+                  <div class="d-flex">
+                    <v-chip
+                      small
+                      v-for="chip in card.tech"
+                      :key="chip.id"
+                      :text-color="chip.color"
+                      class="ml-2"
+                      :color="chip.background"
+                      >{{ chip.name }}</v-chip
+                    >
+                  </div>
                 </div>
               </div>
-            </div>
-          </v-card>
-        </v-hover>
+            </v-card>
+          </v-hover>
+        </div>
       </v-container>
     </section>
 
