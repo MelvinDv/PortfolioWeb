@@ -305,7 +305,7 @@ export default {
   max-height: 250px;
   border-radius: 8px;
 
-  opacity: 100%;
+  opacity: 1;
   transition: all 0.3s ease-out;
   background-color: #24242450;
   cursor: pointer;
