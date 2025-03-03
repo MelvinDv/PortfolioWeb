@@ -14,54 +14,65 @@
           {{ $t("work").toUpperCase() }}
         </p>
 
-        <div v-for="card in cards" :key="card.id">
-          <v-hover
-            v-slot="{ hover }"
-            class="work-cards"
-            :style="$vuetify.breakpoint.xs ? 'place-items: center;' : ''"
+        <v-row>
+          <v-col
+            sm="12"
+            md="4"
+            lg="4"
+            no-gutters
+            justify="start"
+            dense
+            v-for="card in cards"
+            :key="card.id"
           >
-            <v-card
-              data-aos="fade-up"
-              class="d-flex content-card elevation-0 mb-2"
-              @click="openWork(card)"
+            <v-hover
+              v-slot="{ hover }"
+              class="work-cards"
+              :style="$vuetify.breakpoint.xs ? 'place-items: center;' : ''"
             >
-              <div
-                :class="['img-container rounded-lg', { 'zoom-img': hover }]"
-                :style="{
-                  backgroundImage: `url(${card.img})`,
-                }"
+              <v-card
+                data-aos="fade-up"
+                class="d-flex content-card elevation-0 mb-2"
+                @click="openWork(card)"
               >
                 <div
-                  :class="['container-info', { 'opacity-info': !hover }]"
-                  style="min-height: 250px"
+                  :class="['img-container rounded-lg', { 'zoom-img': hover }]"
+                  :style="{
+                    backgroundImage: `url(${card.img})`,
+                  }"
                 >
-                  <div class="d-flex mb-1">
-                    <p
-                      class="card-year font-weight-black grey--text text--lighten-3 mb-0 mx-2"
-                    >
-                      {{ card.year }}
-                    </p>
-                    <p class="card-title font-weight-black white--text mb-0">
-                      {{ card.shortTitle }}
-                    </p>
-                  </div>
+                  <div
+                    :class="['container-info', { 'opacity-info': !hover }]"
+                    style="min-height: 250px"
+                  >
+                    <div class="d-flex mb-1">
+                      <p
+                        class="card-year font-weight-black grey--text text--lighten-3 mb-0 mx-2"
+                      >
+                        {{ card.year }}
+                      </p>
+                      <p class="card-title font-weight-black white--text mb-0">
+                        {{ card.shortTitle }}
+                      </p>
+                    </div>
 
-                  <div class="d-flex">
-                    <v-chip
-                      small
-                      v-for="chip in card.tech"
-                      :key="chip.id"
-                      :text-color="chip.color"
-                      class="ml-2"
-                      :color="chip.background"
-                      >{{ chip.name }}</v-chip
-                    >
+                    <div class="d-flex">
+                      <v-chip
+                        small
+                        v-for="chip in card.tech"
+                        :key="chip.id"
+                        :text-color="chip.color"
+                        class="ml-2"
+                        :color="chip.background"
+                        >{{ chip.name }}</v-chip
+                      >
+                    </div>
                   </div>
                 </div>
-              </div>
-            </v-card>
-          </v-hover>
-        </div>
+              </v-card>
+            </v-hover>
+          </v-col>
+        </v-row>
       </v-container>
     </section>
 
@@ -128,7 +139,9 @@
             <v-tabs-slider color="green darken-4"></v-tabs-slider>
 
             <v-tab> Web </v-tab>
-            <v-tab> {{ $t("mobile") }} </v-tab>
+            <v-tab v-if="workSelected?.images.length > 2">
+              {{ $t("mobile") }}
+            </v-tab>
           </v-tabs>
 
           <v-tabs-items v-model="tab">
@@ -146,9 +159,8 @@
               </v-img>
             </v-tab-item>
 
-            <v-tab-item>
+            <v-tab-item v-if="workSelected?.images.length > 2">
               <v-img
-                v-if="workSelected != null"
                 class="mt-5 rounded-xxl"
                 :src="workSelected.images[2]"
                 width="100%"
@@ -170,6 +182,10 @@ import workPsico from "@/assets/images/workPsico.webp";
 import imgPsicoEdgarTejo from "@/assets/images/edgarTrejoImg_1.webp";
 import imgPsicoEdgarTrejoFullMobile from "@/assets/images/edgar-mobile.webp";
 import imgPsicoEdgarTrejoFullWeb from "@/assets/images/edgar-web.webp";
+
+import workNutrio from "../assets/images/nutriologaWork.webp";
+import imgNutriologa from "../assets/images/work/nutriologa/imgNutriologa.webp";
+import imgNutriologaFullWeb from "../assets/images/work/nutriologa/Nutriologa.webp";
 
 export default {
   name: "WorkSection",
@@ -219,6 +235,25 @@ export default {
           },
         ],
       },
+      {
+        id: 2,
+        title: "Nutriologa",
+        subtitle: "Landing Page",
+        shortTitle: "Langing Page",
+        year: 2025,
+        img: workNutrio,
+        desc: `Modern and user-friendly landing page design for a professional nutritionist. This layout focuses on clarity and accessibility, highlighting key services, credentials, and client benefits. The design features a clean and inviting aesthetic with a well-structured layout, ensuring an intuitive user experience. Emphasizing trust and professionalism, it includes a dedicated ‘About Me’ section, service descriptions, and a contact form to enhance client engagement.`,
+        desc_esp: `Landing page diseñada para una nutrióloga profesional, enfocada en destacar sus servicios, experiencia y la confianza que brinda a sus pacientes. El diseño presenta una estética limpia y moderna, con una paleta de colores frescos y naturales que evocan bienestar y salud. Sección por sección, la página guía al usuario a través de los servicios ofrecidos, el perfil profesional de la nutrióloga, testimonios de pacientes satisfechos y datos de contacto. Gracias a un diseño responsivo y una estructura intuitiva, la navegación es fluida y accesible en cualquier dispositivo.`,
+        images: [imgNutriologaFullWeb, imgNutriologa],
+        tech: [
+          {
+            name: "Figma",
+            color: "white",
+            background: "#9C27B0",
+            id: 1,
+          },
+        ],
+      },
     ],
     dialogProject: false,
     workSelected: null,
@@ -232,22 +267,12 @@ export default {
   methods: {
     openWork(item) {
       this.dialogProject = true;
-
-      //console.log("THIS IS THE PROJECT SELECTED", item);
       this.workSelected = item;
     },
 
     closeWork() {
       this.dialogProject = false;
       this.workSelected = null;
-    },
-
-    setHover(index) {
-      this.cards[index].isHovered = true;
-    },
-
-    unsetHover(index) {
-      this.cards[index].isHovered = false;
     },
   },
 };
@@ -302,7 +327,6 @@ export default {
   flex-flow: column;
   justify-content: end;
   padding: 12px 8px;
-  max-height: 250px;
   border-radius: 8px;
 
   opacity: 1;
