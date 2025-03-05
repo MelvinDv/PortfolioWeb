@@ -14,65 +14,48 @@
           {{ $t("work").toUpperCase() }}
         </p>
 
-        <v-row>
-          <v-col
-            sm="12"
-            md="4"
-            lg="4"
-            no-gutters
-            justify="start"
-            dense
-            v-for="card in cards"
-            :key="card.id"
-          >
-            <v-hover
-              v-slot="{ hover }"
-              class="work-cards"
-              :style="$vuetify.breakpoint.xs ? 'place-items: center;' : ''"
+        <div class="grid-container">
+          <v-hover v-for="card in cards" :key="card.id" v-slot="{ hover }">
+            <v-card
+              data-aos="fade-up"
+              class="d-flex elevation-0"
+              @click="openWork(card)"
+              height="197px"
             >
-              <v-card
-                data-aos="fade-up"
-                class="d-flex content-card elevation-0 mb-2"
-                @click="openWork(card)"
+              <div
+                class="img-container"
+                :style="{
+                  backgroundImage: `url(${card.img})`,
+                }"
               >
-                <div
-                  :class="['img-container rounded-lg', { 'zoom-img': hover }]"
-                  :style="{
-                    backgroundImage: `url(${card.img})`,
-                  }"
-                >
-                  <div
-                    :class="['container-info', { 'opacity-info': !hover }]"
-                    style="min-height: 250px"
-                  >
-                    <div class="d-flex mb-1">
-                      <p
-                        class="card-year font-weight-black grey--text text--lighten-3 mb-0 mx-2"
-                      >
-                        {{ card.year }}
-                      </p>
-                      <p class="card-title font-weight-black white--text mb-0">
-                        {{ card.shortTitle }}
-                      </p>
-                    </div>
+                <div :class="['container-info', { 'opacity-info': !hover }]">
+                  <div class="d-flex mb-1">
+                    <p
+                      class="card-year font-weight-black grey--text text--lighten-3 mb-0 mx-2"
+                    >
+                      {{ card.year }}
+                    </p>
+                    <p class="card-title font-weight-black white--text mb-0">
+                      {{ card.shortTitle }}
+                    </p>
+                  </div>
 
-                    <div class="d-flex">
-                      <v-chip
-                        small
-                        v-for="chip in card.tech"
-                        :key="chip.id"
-                        :text-color="chip.color"
-                        class="ml-2"
-                        :color="chip.background"
-                        >{{ chip.name }}</v-chip
-                      >
-                    </div>
+                  <div class="d-flex">
+                    <v-chip
+                      small
+                      v-for="chip in card.tech"
+                      :key="chip.id"
+                      :text-color="chip.color"
+                      class="ml-2"
+                      :color="chip.background"
+                      >{{ chip.name }}</v-chip
+                    >
                   </div>
                 </div>
-              </v-card>
-            </v-hover>
-          </v-col>
-        </v-row>
+              </div>
+            </v-card>
+          </v-hover>
+        </div>
       </v-container>
     </section>
 
@@ -293,24 +276,22 @@ export default {
   margin-bottom: 0px;
 }
 
-.work-cards {
+.grid-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-}
-
-.content-card {
-  width: fit-content;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 16px;
 }
 
 .img-container {
-  width: 350px;
-  max-height: 250px;
-
   background-size: 127%;
   background-position-x: center;
   background-repeat: no-repeat;
 
   transition: all 0.5s ease;
+}
+
+.img-container:hover {
+  background-size: 130%;
 }
 
 .card-year {
@@ -329,6 +310,8 @@ export default {
   padding: 12px 8px;
   border-radius: 8px;
 
+  height: 100%;
+
   opacity: 1;
   transition: all 0.3s ease-out;
   background-color: #24242450;
@@ -337,10 +320,6 @@ export default {
 
 .opacity-info {
   opacity: 0;
-}
-
-.zoom-img {
-  background-size: 130%;
 }
 
 .fixed-header-card {
