@@ -15,12 +15,16 @@
         </p>
 
         <div class="grid-container">
-          <v-hover v-for="card in cards" :key="card.id" v-slot="{ hover }">
+          <v-hover
+            class="d-inline-block"
+            v-for="card in cards"
+            :key="card.id"
+            v-slot="{ hover }"
+          >
             <v-card
               data-aos="fade-up"
-              class="d-flex elevation-0"
+              class="d-flex elevation-0 card-full-height"
               @click="openWork(card)"
-              height="197px"
             >
               <div
                 class="img-container"
@@ -170,6 +174,14 @@ import workNutrio from "../assets/images/nutriologaWork.webp";
 import imgNutriologa from "../assets/images/work/nutriologa/imgNutriologa.webp";
 import imgNutriologaFullWeb from "../assets/images/work/nutriologa/Nutriologa.webp";
 
+import workTodo from "../assets/images/todoWork.webp";
+import imgTodo from "@/assets/images/work/todo/imgTodo.webp";
+import imgTodoFullWeb from "../assets/images/work/todo/Todo.webp";
+import imgTodoFullMobile from "@/assets/images/work/todo/Todo-mobile.webp";
+
+import workCyberpuerta from "../assets/images/work/cyberpuerta/cyber.webp";
+import imgCyberpuertaFullWeb from "../assets/images/work/cyberpuerta/cyberpuertaFullWeb.webp";
+
 export default {
   name: "WorkSection",
 
@@ -237,6 +249,60 @@ export default {
           },
         ],
       },
+      {
+        id: 3,
+        title: "To Do App",
+        subtitle: "Task Management Application",
+        shortTitle: "To Do App",
+        year: 2025,
+        img: workTodo,
+        desc: `A task management application designed to help users organize and prioritize their daily activities efficiently. The app features an intuitive and easy-to-use interface, allowing users to create, mark as completed, and delete tasks with ease. It includes functionalities such as filtering by completed or pending tasks and a light/dark mode, providing a personalized experience for each user.
+              <br> <br> The responsive design ensures the app works seamlessly on both mobile and desktop devices, offering a smooth experience across all platforms. What I enjoyed most about this project was building it entirely with HTML, CSS, and vanilla JavaScript, without any frameworks or external libraries, reinforcing my JavaScript fundamentals, DOM manipulation skills, and best practices in web design.
+              <br> <br> <a style="text-decoration: none; font-weight: 500; color: #2e7d32" href="https://todo-delta-brown.vercel.app" target="_blank">Visit my Todo App!</a>`,
+        desc_esp: `Aplicación de gestión de tareas diseñada para ayudar a los usuarios a organizar y priorizar sus actividades diarias de manera eficiente. La aplicación presenta una interfaz intuitiva y fácil de usar, que permite crear, marcar como completadas y eliminar tareas con facilidad. Incluye funcionalidades como filtrado por tareas completas o pendientes y un modo light/dark, asegurando una experiencia personalizada para cada usuario.
+                  <br> <br> El diseño responsivo garantiza que la aplicación funcione perfectamente en dispositivos móviles y de escritorio, proporcionando una experiencia fluida en cualquier plataforma. Lo que más disfruté de este proyecto fue programar completamente en HTML, CSS y JavaScript puro, sin frameworks ni librerías externas, reforzando mis fundamentos de JavaScript, manipulación del DOM y buenas prácticas de diseño web.
+                  <br> <br> <a style="text-decoration: none; font-weight: 500; color: #2e7d32" href="https://todo-delta-brown.vercel.app" target="_blank">Visita mi Todo App!</a>`,
+        images: [imgTodoFullWeb, imgTodo, imgTodoFullMobile],
+        tech: [
+          {
+            name: "JavaScript",
+            color: "grey--text text--darken-4",
+            background: "#F0D900",
+            id: 1,
+          },
+          {
+            name: "HTML",
+            color: "white",
+            background: "#F16529",
+            id: 2,
+          },
+          {
+            name: "CSS",
+            color: "white",
+            background: "#13A1DF",
+            id: 3,
+          },
+        ],
+      },
+      {
+        id: 4,
+        title: "Cyberpuerta Redesign",
+        subtitle: "Redesign UI Design",
+        shortTitle: "Cyberpuerta Redesign",
+        year: 2025,
+        img: workCyberpuerta,
+        desc: `This project is a conceptual redesign of the Cyberpuerta website, created in Figma with the goal of enhancing both user experience and the visual aesthetics of the platform. In this redesign, each product card was given a unique layout to highlight the most relevant information, while increased spacing provides a sense of “breathing room” and improves readability. The brand’s primary color was used strategically for key actions and interactions, guiding the user’s attention to important elements. The overall design is more minimalist, simplifying the interface and enhancing clarity and usability. This project allowed me to explore how small design decisions and visual hierarchy can significantly improve user experience and strengthen brand identity.`,
+        desc_esp: `Este proyecto es un rediseño conceptual de la página web de Cyberpuerta, realizado en Figma, con el objetivo de mejorar la experiencia de usuario y la estética visual de la plataforma. En este rediseño, a cada card de producto se le aplicó un diseño único para resaltar la información más relevante, mientras que los espaciados más amplios generan una sensación de “respiro” y facilitan la lectura. El color principal de la marca se utilizó estratégicamente en acciones e interacciones importantes, guiando la atención del usuario hacia los elementos clave, y el enfoque general del diseño es más minimalista, simplificando la interfaz y potenciando la claridad y la usabilidad. Este proyecto me permitió explorar cómo pequeñas decisiones de diseño y la jerarquía visual pueden mejorar la experiencia del usuario y reforzar la identidad de la marca.`,
+        images: [imgCyberpuertaFullWeb, workCyberpuerta],
+        tech: [
+          {
+            name: "Figma",
+            color: "white",
+            background: "#9C27B0",
+            id: 1,
+          },
+        ],
+      },
     ],
     dialogProject: false,
     workSelected: null,
@@ -282,12 +348,27 @@ export default {
   gap: 16px;
 }
 
+.card-full-height {
+  height: 197px;
+}
+
+@media (max-width: 600px) {
+  .card-full-height {
+    max-height: 350px;
+  }
+  .img-container {
+    height: 100%;
+  }
+}
+
 .img-container {
   background-size: 127%;
   background-position-x: center;
   background-repeat: no-repeat;
 
   transition: all 0.5s ease;
+
+  width: 100%;
 }
 
 .img-container:hover {
