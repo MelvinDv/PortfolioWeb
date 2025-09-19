@@ -139,7 +139,7 @@
                 :src="workSelected.images[0]"
                 contain
                 width="100%"
-                :height="$vuetify.breakpoint.smAndDown ? '520px' : '100%'"
+                :height="$vuetify.breakpoint.smAndDown ? '520px' : 'auto'"
                 max-height="800px"
                 style="aspect-ratio: 16/9"
               >
@@ -345,7 +345,7 @@ export default {
     ],
     dialogProject: false,
     workSelected: null,
-    tab: null,
+    tab: 0,
   }),
 
   created() {
@@ -356,11 +356,13 @@ export default {
     openWork(item) {
       this.dialogProject = true;
       this.workSelected = item;
+      this.tab = 0;
     },
 
     closeWork() {
       this.dialogProject = false;
       this.workSelected = null;
+      this.tab = 0;
     },
   },
 };
