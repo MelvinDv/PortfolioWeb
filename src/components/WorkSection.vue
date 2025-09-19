@@ -182,6 +182,10 @@ import imgTodoFullMobile from "@/assets/images/work/todo/Todo-mobile.webp";
 import workCyberpuerta from "../assets/images/work/cyberpuerta/cyber.webp";
 import imgCyberpuertaFullWeb from "../assets/images/work/cyberpuerta/cyberpuertaFullWeb.webp";
 
+import workWeather from "../assets/images/work/weatherApp/imgWeather.webp";
+import imgWeather from "../assets/images/work/weatherApp/WeatherApp.webp";
+import imgWeatherFullWeb from "../assets/images/work/weatherApp/weatherFullWeb.webp";
+
 export default {
   name: "WorkSection",
 
@@ -300,6 +304,41 @@ export default {
             color: "white",
             background: "#9C27B0",
             id: 1,
+          },
+        ],
+      },
+      {
+        id: 5,
+        title: "Weather App",
+        subtitle: "",
+        shortTitle: "Weather App",
+        year: 2025,
+        img: workWeather,
+        desc: `A weather web application built to display current conditions, hourly forecasts, and a 7-day outlook in a clear and accessible way. Users can search any location using a geocoding search (Nominatim API) and retrieve precise coordinates; weather data is fetched from the Open-Meteo API to provide the current weather, hourly details, and a summary for the next seven days. The interface emphasizes readability: prioritized information (current temperature, feels-like, short description), an hourly view for upcoming hours, and a 7-day view showing highs, lows, and conditions.
+        <br> <br> Technically, the project demonstrates integration with public APIs, asynchronous request handling and error management, and a responsive design that works smoothly on mobile and desktop. This challenge allowed me to deepen my skills in REST API integration with JavaScript, improve search and loading/error state handling, and craft a minimal, user-friendly UI that makes weather data easy to understand at a glance.
+        <br> <br> <a style="text-decoration: none; font-weight: 500; color: #2e7d32" href="https://weather-app-wine-rho.vercel.app/" target="_blank">Visit the project!</a>`,
+        desc_esp: `Aplicación web de clima desarrollada para mostrar el clima actual, el pronóstico por horas y el pronóstico a 7 días de forma clara y accesible. El usuario puede buscar cualquier ubicación mediante un buscador (geocodificación con la API de Nominatim) y obtener con precisión la localización solicitada; los datos meteorológicos se consultan con la API de Open-Meteo para mostrar el estado actual, el detalle por hora y el resumen de los próximos siete días. La interfaz prioriza la legibilidad: información jerarquizada (temperatura actual, sensación, descripción breve), un carrusel o tabla horaria para consultar las horas siguientes y una vista de 7 días con máximas, mínimas y condiciones.
+        <br> <br> Desde el punto de vista técnico, el proyecto integra llamadas a APIs públicas, manejo de respuestas asíncronas y errores, y presenta un diseño responsivo que funciona correctamente en móviles y escritorio. El reto me permitió profundizar en la integración de APIs REST desde JavaScript, optimizar la experiencia de búsqueda y manejo de estados de carga/errores, y diseñar una UI usable y minimalista que facilita la interpretación rápida del pronóstico.
+        <br> <br> <a style="text-decoration: none; font-weight: 500; color: #2e7d32" href="https://weather-app-wine-rho.vercel.app/" target="_blank">Visita el proyecto!</a>`,
+        images: [imgWeatherFullWeb, imgWeather],
+        tech: [
+          {
+            name: "JavaScript",
+            color: "grey--text text--darken-4",
+            background: "#F0D900",
+            id: 1,
+          },
+          {
+            name: "HTML",
+            color: "white",
+            background: "#F16529",
+            id: 2,
+          },
+          {
+            name: "CSS",
+            color: "white",
+            background: "#13A1DF",
+            id: 3,
           },
         ],
       },
