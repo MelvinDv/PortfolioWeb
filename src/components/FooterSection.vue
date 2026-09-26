@@ -31,7 +31,14 @@
             </a>
           </div>
 
-          <div class="d-flex align-center">
+          <div
+            :class="{
+              'd-flex': true,
+              'align-center': true,
+              'mr-10': !$vuetify.breakpoint.xs,
+              'mb-5': $vuetify.breakpoint.xs,
+            }"
+          >
             <v-icon class="grey--text text--darken-1"
               >fa-brands fa-linkedin</v-icon
             >
@@ -43,6 +50,15 @@
               <p class="grey--text text--darken-1 mb-0 ml-2">
                 /in/melvinduranvega
               </p>
+            </a>
+          </div>
+
+          <div class="d-flex align-center">
+            <v-icon class="grey--text text--darken-1"
+              >fa-brands fa-github</v-icon
+            >
+            <a class="links" href="https://github.com/MelvinDv" target="_blank">
+              <p class="grey--text text--darken-1 mb-0 ml-2">/MelvinDv</p>
             </a>
           </div>
         </div>

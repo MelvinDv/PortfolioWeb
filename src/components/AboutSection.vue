@@ -55,7 +55,7 @@
           </div>
         </v-sheet>
 
-        <div style="width: 70%">
+        <div :style="{ width: $vuetify.breakpoint.xs ? '100%' : '70%' }">
           <p class="grey--text text--darken-1">
             <span data-aos="fade-up">{{ $t("description.paragraph_1") }}</span>
             <br />
@@ -94,9 +94,9 @@
             <v-timeline>
               <v-timeline-item data-aos="zoom-in" color="green darken-4">
                 <p class="mb-0 grey--text text--darken-3">Didcom S.A de C.V</p>
-                <p class="mb-0 grey--text text--darken-1">Jul 2023 - Actual</p>
+                <p class="mb-0 grey--text text--darken-1">Jul 2023 - Sep 2026</p>
                 <p class="mb-0 grey--text text--darken-3 font-weight-bold">
-                  Frontend Developer Jr
+                  Frontend Developer
                 </p>
               </v-timeline-item>
               <v-timeline-item
@@ -107,7 +107,7 @@
                 <p class="mb-0 grey--text text--darken-3">Didcom S.A de C.V</p>
                 <p class="mb-0 grey--text text--darken-1">Mar - Jul 2023</p>
                 <p class="mb-0 grey--text text--darken-3 font-weight-medium">
-                  Frontend Developer Intership
+                  Frontend Developer Internship
                 </p>
               </v-timeline-item>
             </v-timeline>
@@ -137,7 +137,7 @@ export default {
 
 .section-title-about-responsive {
   text-align: center;
-  font-size: 6.7rem;
+  font-size: clamp(2.5rem, 14vw, 6.7rem);
   font-weight: bold;
   color: #212121;
   margin-bottom: 0px;

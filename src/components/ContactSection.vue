@@ -15,7 +15,11 @@
       <v-row no-gutters>
         <v-col v-if="!$vuetify.breakpoint.smAndDown" cols="3"></v-col>
         <v-col :cols="$vuetify.breakpoint.smAndDown ? 12 : 6">
-          <v-form @submit.prevent="validateForm" v-model="isFormValid">
+          <v-form
+            ref="form"
+            @submit.prevent="validateForm"
+            v-model="isFormValid"
+          >
             <div class="d-flex jusfify-center align-center flex-column">
               <v-sheet
                 class="pa-4"
@@ -86,7 +90,7 @@ import emailjs from "emailjs-com";
 import Swal from "sweetalert2";
 
 export default {
-  name: "AboutSection",
+  name: "ContactSection",
 
   data: () => ({
     loadingForm: false,
@@ -156,7 +160,7 @@ export default {
             this.loadingForm = false;
 
             Swal.fire({
-              position: this.$vuetify.breakpoint.xs ? "bottom" : "bttom-end",
+              position: this.$vuetify.breakpoint.xs ? "bottom" : "bottom-end",
               icon: "error",
               text: this.$t("msg-error"),
               showConfirmButton: false,
@@ -173,10 +177,9 @@ export default {
     },
 
     cleanForm() {
-      this.form.message = "";
+      // reset() limpia los campos sin disparar los mensajes de validación
+      this.$refs.form.reset();
       this.form.reply_to = "";
-      this.form.name = "";
-      this.form.email = "";
     },
   },
 };
@@ -191,7 +194,7 @@ export default {
 }
 
 .section-title-contact-responsive {
-  font-size: 3.5rem;
+  font-size: clamp(2rem, 12vw, 3.5rem);
   font-weight: bold;
   color: #212121;
   margin-bottom: 0px;

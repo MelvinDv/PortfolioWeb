@@ -32,7 +32,14 @@
                   backgroundImage: `url(${card.img})`,
                 }"
               >
-                <div :class="['container-info', { 'opacity-info': !hover }]">
+                <div
+                  :class="[
+                    'container-info',
+                    {
+                      'opacity-info': !hover && !$vuetify.breakpoint.smAndDown,
+                    },
+                  ]"
+                >
                   <div class="d-flex mb-1">
                     <p
                       class="card-year font-weight-black grey--text text--lighten-3 mb-0 mx-2"
@@ -83,6 +90,7 @@
             >
 
             <span
+              v-if="workSelected?.subtitle"
               class="font-weight-medium grey--text text--darken-3 text-center mb-2"
             >
               - {{ workSelected?.subtitle }} -
@@ -102,12 +110,13 @@
           </div>
 
           <div class="d-flex flex-column justify-center align-center">
-            <v-img
+            <img
               v-if="workSelected != null"
-              class="mb-5 rounded-xxl"
+              class="mb-5 rounded-xxl dialog-img"
               :src="workSelected.images[1]"
-              :max-width="$vuetify.breakpoint.smAndDown ? '100%' : '800px'"
-            ></v-img>
+              :alt="workSelected.title"
+              style="max-width: 800px"
+            />
 
             <p
               v-html="
@@ -133,29 +142,26 @@
 
           <v-tabs-items v-model="tab">
             <v-tab-item>
-              <v-img
-                v-if="workSelected != null"
-                class="mt-5 rounded-xxl"
-                :src="workSelected.images[0]"
-                contain
-                width="100%"
-                :height="$vuetify.breakpoint.smAndDown ? '520px' : 'auto'"
-                max-height="800px"
-                style="aspect-ratio: 16/9"
-              >
-              </v-img>
+              <div class="d-flex justify-center">
+                <img
+                  v-if="workSelected != null"
+                  class="mt-5 rounded-lg dialog-img"
+                  :src="workSelected.images[0]"
+                  :alt="`${workSelected.title} - Web`"
+                  style="max-height: 800px; object-fit: contain"
+                />
+              </div>
             </v-tab-item>
 
             <v-tab-item v-if="workSelected?.images.length > 2">
-              <v-img
-                class="mt-5 rounded-xxl"
-                :src="workSelected.images[2]"
-                width="100%"
-                :max-width="$vuetify.breakpoint.smAndDown ? '320px' : '100%'"
-                height="auto"
-                style="object-fit: contain"
-              >
-              </v-img>
+              <div class="d-flex justify-center">
+                <img
+                  class="mt-5 rounded-lg dialog-img"
+                  :src="workSelected.images[2]"
+                  :alt="`${workSelected.title} - ${$t('mobile')}`"
+                  style="width: auto"
+                />
+              </div>
             </v-tab-item>
           </v-tabs-items>
         </v-card-text>
@@ -195,7 +201,7 @@ export default {
         id: 1,
         title: "Edgar Trejo",
         subtitle: "Landing Page",
-        shortTitle: "Langing Page",
+        shortTitle: "Landing Page",
         year: 2024,
         img: workPsico,
         desc: `I designed and developed a fully responsive landing page for a psychologist specializing in mental health and emotional well-being services. The goal was to create a welcoming and professional platform that could effectively communicate the psychologist's expertise while encouraging potential clients to get in touch. To achieve this, I implemented a user-centered design approach, focusing on clean aesthetics and an intuitive layout that inspires trust and comfort. The landing page prominently features key elements such as service descriptions, a contact form, and strategically placed calls-to-action to maximize user engagement and drive conversions.
@@ -238,7 +244,7 @@ export default {
         id: 2,
         title: "Nutriologa",
         subtitle: "Landing Page",
-        shortTitle: "Langing Page",
+        shortTitle: "Landing Page",
         year: 2025,
         img: workNutrio,
         desc: `Modern and user-friendly landing page design for a professional nutritionist. This layout focuses on clarity and accessibility, highlighting key services, credentials, and client benefits. The design features a clean and inviting aesthetic with a well-structured layout, ensuring an intuitive user experience. Emphasizing trust and professionalism, it includes a dedicated ‘About Me’ section, service descriptions, and a contact form to enhance client engagement.`,
@@ -310,7 +316,7 @@ export default {
       {
         id: 5,
         title: "Weather App",
-        subtitle: "",
+        subtitle: "Weather Application",
         shortTitle: "Weather App",
         year: 2025,
         img: workWeather,
@@ -377,7 +383,7 @@ export default {
 }
 
 .section-title-responsive {
-  font-size: 5rem;
+  font-size: clamp(2.5rem, 15vw, 5rem);
   font-weight: bold;
   color: #212121;
   margin-bottom: 0px;
@@ -450,9 +456,10 @@ export default {
   top: 0;
 }
 
-/*TABS*/
-.theme--light.v-tabs-items {
-  display: flex;
-  justify-content: center;
+.dialog-img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
 }
 </style>

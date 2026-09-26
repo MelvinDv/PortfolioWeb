@@ -69,20 +69,20 @@
           <span
             class="font-weight-medium toolbarStyle mb-2 mt-2 text-center"
             style="font-size: 24px"
-            @click="$scrollTo('#work')"
-            >Work</span
+            @click="goTo('#work')"
+            >{{ $t("work") }}</span
           >
           <span
             class="font-weight-medium toolbarStyle mb-2 text-center"
             style="font-size: 24px"
-            @click="$scrollTo('#about')"
-            >About</span
+            @click="goTo('#about')"
+            >{{ $t("about") }}</span
           >
           <span
             class="font-weight-medium toolbarStyle mb-2 text-center"
             style="font-size: 24px"
-            @click="$scrollTo('#contact')"
-            >Contact Me</span
+            @click="goTo('#contact')"
+            >{{ $t("contact") }}</span
           >
 
           <div class="d-flex justify-center align-center mb-2">
@@ -113,7 +113,7 @@
       </v-navigation-drawer>
     </v-app-bar>
 
-    <v-main style="width: 100vw; max-width: 100vw; min-width: 100vw">
+    <v-main style="width: 100%; overflow-x: hidden">
       <router-view />
     </v-main>
   </v-app>
@@ -131,7 +131,7 @@ export default {
   created() {
     window.home = this;
     const userLang = localStorage.getItem("userLang") || "en";
-    this.$i18n.locale = userLang;
+    this.changeLang(userLang);
   },
 
   methods: {
@@ -139,9 +139,16 @@ export default {
       this.drawer = !this.drawer;
     },
 
+    goTo(section) {
+      this.drawer = false;
+      this.$scrollTo(section);
+    },
+
     changeLang(lng) {
       this.$i18n.locale = lng;
       localStorage.setItem("userLang", lng);
+      document.title = this.$t("page-title");
+      document.documentElement.lang = lng;
     },
   },
 };
