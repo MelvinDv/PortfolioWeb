@@ -94,7 +94,9 @@
             <v-timeline>
               <v-timeline-item data-aos="zoom-in" color="green darken-4">
                 <p class="mb-0 grey--text text--darken-3">Didcom S.A de C.V</p>
-                <p class="mb-0 grey--text text--darken-1">Jul 2023 - Sep 2026</p>
+                <p class="mb-0 grey--text text--darken-1">
+                  Jul 2023 - Sep 2026
+                </p>
                 <p class="mb-0 grey--text text--darken-3 font-weight-bold">
                   Frontend Developer
                 </p>

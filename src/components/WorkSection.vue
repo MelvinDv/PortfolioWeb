@@ -126,7 +126,7 @@
                     : workSelected.desc_esp
                   : ''
               "
-              class="text-justify px-3"
+              class="text-justify px-3 project-desc"
               style="max-width: 800px"
             ></p>
           </div>
@@ -191,6 +191,10 @@ import imgCyberpuertaFullWeb from "../assets/images/work/cyberpuerta/cyberpuerta
 import workWeather from "../assets/images/work/weatherApp/imgWeather.webp";
 import imgWeather from "../assets/images/work/weatherApp/WeatherApp.webp";
 import imgWeatherFullWeb from "../assets/images/work/weatherApp/weatherFullWeb.webp";
+
+import workTambos from "../assets/images/work/reconstructuraTambos/thumbnail.webp";
+import imgTambos from "../assets/images/work/reconstructuraTambos/hero.webp";
+import imgTambosFullWeb from "../assets/images/work/reconstructuraTambos/fullweb.webp";
 
 export default {
   name: "WorkSection",
@@ -268,10 +272,10 @@ export default {
         img: workTodo,
         desc: `A task management application designed to help users organize and prioritize their daily activities efficiently. The app features an intuitive and easy-to-use interface, allowing users to create, mark as completed, and delete tasks with ease. It includes functionalities such as filtering by completed or pending tasks and a light/dark mode, providing a personalized experience for each user.
               <br> <br> The responsive design ensures the app works seamlessly on both mobile and desktop devices, offering a smooth experience across all platforms. What I enjoyed most about this project was building it entirely with HTML, CSS, and vanilla JavaScript, without any frameworks or external libraries, reinforcing my JavaScript fundamentals, DOM manipulation skills, and best practices in web design.
-              <br> <br> <a style="text-decoration: none; font-weight: 500; color: #2e7d32" href="https://todo-delta-brown.vercel.app" target="_blank">Visit my Todo App!</a>`,
+              <br> <br> <a class="project-cta" href="https://todo-delta-brown.vercel.app" target="_blank">Visit my Todo App!</a>`,
         desc_esp: `Aplicación de gestión de tareas diseñada para ayudar a los usuarios a organizar y priorizar sus actividades diarias de manera eficiente. La aplicación presenta una interfaz intuitiva y fácil de usar, que permite crear, marcar como completadas y eliminar tareas con facilidad. Incluye funcionalidades como filtrado por tareas completas o pendientes y un modo light/dark, asegurando una experiencia personalizada para cada usuario.
                   <br> <br> El diseño responsivo garantiza que la aplicación funcione perfectamente en dispositivos móviles y de escritorio, proporcionando una experiencia fluida en cualquier plataforma. Lo que más disfruté de este proyecto fue programar completamente en HTML, CSS y JavaScript puro, sin frameworks ni librerías externas, reforzando mis fundamentos de JavaScript, manipulación del DOM y buenas prácticas de diseño web.
-                  <br> <br> <a style="text-decoration: none; font-weight: 500; color: #2e7d32" href="https://todo-delta-brown.vercel.app" target="_blank">Visita mi Todo App!</a>`,
+                  <br> <br> <a class="project-cta" href="https://todo-delta-brown.vercel.app" target="_blank">Visita mi Todo App!</a>`,
         images: [imgTodoFullWeb, imgTodo, imgTodoFullMobile],
         tech: [
           {
@@ -322,10 +326,10 @@ export default {
         img: workWeather,
         desc: `A weather web application built to display current conditions, hourly forecasts, and a 7-day outlook in a clear and accessible way. Users can search any location using a geocoding search (Nominatim API) and retrieve precise coordinates; weather data is fetched from the Open-Meteo API to provide the current weather, hourly details, and a summary for the next seven days. The interface emphasizes readability: prioritized information (current temperature, feels-like, short description), an hourly view for upcoming hours, and a 7-day view showing highs, lows, and conditions.
         <br> <br> Technically, the project demonstrates integration with public APIs, asynchronous request handling and error management, and a responsive design that works smoothly on mobile and desktop. This challenge allowed me to deepen my skills in REST API integration with JavaScript, improve search and loading/error state handling, and craft a minimal, user-friendly UI that makes weather data easy to understand at a glance.
-        <br> <br> <a style="text-decoration: none; font-weight: 500; color: #2e7d32" href="https://weather-app-wine-rho.vercel.app/" target="_blank">Visit the project!</a>`,
+        <br> <br> <a class="project-cta" href="https://weather-app-wine-rho.vercel.app/" target="_blank">Visit the project!</a>`,
         desc_esp: `Aplicación web de clima desarrollada para mostrar el clima actual, el pronóstico por horas y el pronóstico a 7 días de forma clara y accesible. El usuario puede buscar cualquier ubicación mediante un buscador (geocodificación con la API de Nominatim) y obtener con precisión la localización solicitada; los datos meteorológicos se consultan con la API de Open-Meteo para mostrar el estado actual, el detalle por hora y el resumen de los próximos siete días. La interfaz prioriza la legibilidad: información jerarquizada (temperatura actual, sensación, descripción breve), un carrusel o tabla horaria para consultar las horas siguientes y una vista de 7 días con máximas, mínimas y condiciones.
         <br> <br> Desde el punto de vista técnico, el proyecto integra llamadas a APIs públicas, manejo de respuestas asíncronas y errores, y presenta un diseño responsivo que funciona correctamente en móviles y escritorio. El reto me permitió profundizar en la integración de APIs REST desde JavaScript, optimizar la experiencia de búsqueda y manejo de estados de carga/errores, y diseñar una UI usable y minimalista que facilita la interpretación rápida del pronóstico.
-        <br> <br> <a style="text-decoration: none; font-weight: 500; color: #2e7d32" href="https://weather-app-wine-rho.vercel.app/" target="_blank">Visita el proyecto!</a>`,
+        <br> <br> <a class="project-cta" href="https://weather-app-wine-rho.vercel.app/" target="_blank">Visita el proyecto!</a>`,
         images: [imgWeatherFullWeb, imgWeather],
         tech: [
           {
@@ -345,6 +349,47 @@ export default {
             color: "white",
             background: "#13A1DF",
             id: 3,
+          },
+        ],
+      },
+      {
+        id: 6,
+        title: "Reconstructora de Tambos",
+        subtitle: "Landing Page",
+        shortTitle: "Reconstructora de Tambos",
+        year: 2026,
+        img: workTambos,
+        desc: `A fully responsive landing page developed for Reconstructora de Tambos, a company specialized in the reconstruction and repair of industrial drums (tambos). The goal was to build a professional and trustworthy online presence that clearly communicates the company's services and makes it easy for potential clients to get in touch. I focused on a clean, straightforward layout with a clear visual hierarchy, highlighting the services offered, the company's value, and prominent calls-to-action to drive customer inquiries.
+        <br> <br> The site was built from scratch with Vue.js, HTML, CSS, and JavaScript, and optimized to deliver a smooth experience across mobile, tablet, and desktop devices. This project allowed me to turn a client's needs into a functional, scalable digital product that strengthens their brand image and supports their business growth.
+        <br> <br> <a class="project-cta" href="https://reconstructora-tambos-hqxmx73ea-melvin-durans-projects.vercel.app" target="_blank">Visit the project!</a>`,
+        desc_esp: `Landing page totalmente responsiva desarrollada para Reconstructora de Tambos, una empresa especializada en la reconstrucción y reparación de tambos industriales. El objetivo fue crear una presencia en línea profesional y confiable que comunicara claramente los servicios de la empresa y facilitara a los clientes potenciales ponerse en contacto. Me enfoqué en un diseño limpio y directo, con una jerarquía visual clara que destaca los servicios ofrecidos, el valor de la empresa y llamadas a la acción visibles para impulsar las solicitudes de los clientes.
+        <br> <br> El sitio se construyó desde cero con Vue.js, HTML, CSS y JavaScript, y se optimizó para ofrecer una experiencia fluida en dispositivos móviles, tabletas y de escritorio. Este proyecto me permitió convertir las necesidades de un cliente en un producto digital funcional y escalable que refuerza la imagen de su marca y apoya el crecimiento de su negocio.
+        <br> <br> <a class="project-cta" href="https://reconstructora-tambos-hqxmx73ea-melvin-durans-projects.vercel.app" target="_blank">Visita el proyecto!</a>`,
+        images: [imgTambosFullWeb, imgTambos],
+        tech: [
+          {
+            name: "Vue.js",
+            color: "grey--text text--darken-4",
+            background: "#42B883",
+            id: 1,
+          },
+          {
+            name: "JavaScript",
+            color: "grey--text text--darken-4",
+            background: "#F0D900",
+            id: 2,
+          },
+          {
+            name: "HTML",
+            color: "white",
+            background: "#F16529",
+            id: 3,
+          },
+          {
+            name: "CSS",
+            color: "white",
+            background: "#13A1DF",
+            id: 4,
           },
         ],
       },
@@ -375,6 +420,26 @@ export default {
 </script>
 
 <style scoped>
+.project-desc ::v-deep .project-cta {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 10px 26px;
+  background-color: #2e7d32;
+  color: #ffffff;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 999px;
+  box-shadow: 0 4px 12px rgba(46, 125, 50, 0.35);
+  transition: transform 0.2s ease, background-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.project-desc ::v-deep .project-cta:hover {
+  background-color: #1b5e20;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(46, 125, 50, 0.45);
+}
+
 .section-title {
   font-size: 128px;
   font-weight: bold;
