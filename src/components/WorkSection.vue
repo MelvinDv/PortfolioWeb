@@ -17,7 +17,7 @@
         <div class="grid-container">
           <v-hover
             class="d-inline-block"
-            v-for="card in cards"
+            v-for="card in sortedCards"
             :key="card.id"
             v-slot="{ hover }"
           >
@@ -32,6 +32,11 @@
                   backgroundImage: `url(${card.img})`,
                 }"
               >
+                <span v-if="card.highlight" class="work-badge">
+                  <span class="work-badge-dot"></span>
+                  {{ $t(card.highlight) }}
+                </span>
+
                 <div
                   :class="[
                     'container-info',
@@ -96,6 +101,16 @@
               - {{ workSelected?.subtitle }} -
             </span>
 
+            <div
+              v-if="workSelected?.highlight"
+              class="d-flex justify-center mb-3"
+            >
+              <span class="work-badge work-badge--inline">
+                <span class="work-badge-dot"></span>
+                {{ $t(workSelected.highlight) }}
+              </span>
+            </div>
+
             <div class="d-flex justify-center mb-4">
               <v-chip
                 small
@@ -134,7 +149,9 @@
           <v-tabs v-model="tab" color="green darken-4" centered fixed-tabs>
             <v-tabs-slider color="green darken-4"></v-tabs-slider>
 
-            <v-tab> Web </v-tab>
+            <v-tab>
+              {{ workSelected?.mobileOnly ? $t("mobile") : "Web" }}
+            </v-tab>
             <v-tab v-if="workSelected?.images.length > 2">
               {{ $t("mobile") }}
             </v-tab>
@@ -147,7 +164,9 @@
                   v-if="workSelected != null"
                   class="mt-5 rounded-lg dialog-img"
                   :src="workSelected.images[0]"
-                  :alt="`${workSelected.title} - Web`"
+                  :alt="`${workSelected.title} - ${
+                    workSelected.mobileOnly ? $t('mobile') : 'Web'
+                  }`"
                   style="max-height: 800px; object-fit: contain"
                 />
               </div>
@@ -192,12 +211,23 @@ import workWeather from "../assets/images/work/weatherApp/imgWeather.webp";
 import imgWeather from "../assets/images/work/weatherApp/WeatherApp.webp";
 import imgWeatherFullWeb from "../assets/images/work/weatherApp/weatherFullWeb.webp";
 
+import workBlockDay from "../assets/images/work/blockDay/thumbnail.webp";
+import imgBlockDay from "../assets/images/work/blockDay/hero.webp";
+import imgBlockDayFullApp from "../assets/images/work/blockDay/fullApp.png";
+
 import workTambos from "../assets/images/work/reconstructuraTambos/thumbnail.webp";
 import imgTambos from "../assets/images/work/reconstructuraTambos/hero.webp";
 import imgTambosFullWeb from "../assets/images/work/reconstructuraTambos/fullweb.webp";
 
 export default {
   name: "WorkSection",
+
+  computed: {
+    // Del mas nuevo al mas viejo; a mismo año, el ultimo agregado va primero
+    sortedCards() {
+      return [...this.cards].sort((a, b) => b.year - a.year || b.id - a.id);
+    },
+  },
 
   data: () => ({
     cards: [
@@ -393,6 +423,41 @@ export default {
           },
         ],
       },
+      {
+        id: 7,
+        title: "BlockDay",
+        subtitle: "iOS App",
+        shortTitle: "BlockDay",
+        year: 2026,
+        img: workBlockDay,
+        mobileOnly: true,
+        highlight: "badge-wip",
+        desc: `BlockDay is an iOS app built with SwiftUI around time blocking: instead of an endless to-do list, the day is planned as blocks of time assigned to the things that actually matter. Each block has its own color, a daily goal in minutes, and a progress bar that fills as time is tracked, so a glance is enough to know how the day is going. From the dashboard you can drag blocks into the day, start and stop them, and review your habits over time in the analysis section.
+        <br> <br> The interface follows a dark, calm, and typographic design language, with generous spacing and subtle animations that keep the focus on the content. Technically, the project is my way into native development with SwiftUI and Swift: declarative views, state management, local data persistence, and Apple's Human Interface Guidelines. It's currently in development and not published on the App Store yet.`,
+        desc_esp: `BlockDay es una app para iOS desarrollada con SwiftUI y basada en la administración del tiempo por bloques: en lugar de una lista infinita de pendientes, el día se planea como bloques de tiempo asignados a lo que realmente importa. Cada bloque tiene su propio color, una meta diaria en minutos y una barra de progreso que se llena conforme se registra el tiempo, de modo que un vistazo basta para saber cómo va el día. Desde el dashboard se pueden arrastrar bloques al día, iniciarlos y detenerlos, y revisar los hábitos a lo largo del tiempo en la sección de análisis.
+        <br> <br> La interfaz sigue un lenguaje de diseño oscuro, sobrio y tipográfico, con espaciados amplios y animaciones sutiles que mantienen la atención en el contenido. En lo técnico, el proyecto es mi entrada al desarrollo nativo con SwiftUI y Swift: vistas declarativas, manejo de estado, persistencia local de datos y las Human Interface Guidelines de Apple. Actualmente se encuentra en desarrollo y aún no está publicada en la App Store.`,
+        images: [imgBlockDayFullApp, imgBlockDay],
+        tech: [
+          {
+            name: "SwiftUI",
+            color: "white",
+            background: "#0071E3",
+            id: 1,
+          },
+          {
+            name: "Swift",
+            color: "white",
+            background: "#F05138",
+            id: 2,
+          },
+          {
+            name: "iOS",
+            color: "white",
+            background: "#242424",
+            id: 3,
+          },
+        ],
+      },
     ],
     dialogProject: false,
     workSelected: null,
@@ -440,6 +505,72 @@ export default {
   box-shadow: 0 6px 16px rgba(46, 125, 50, 0.45);
 }
 
+.work-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: 999px;
+
+  background: linear-gradient(135deg, #2e7d32, #66bb6a);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  animation: badge-glow 2.4s ease-in-out infinite;
+}
+
+.work-badge--inline {
+  position: static;
+  font-size: 12px;
+  padding: 6px 14px;
+}
+
+.work-badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  animation: badge-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes badge-glow {
+  0%,
+  100% {
+    box-shadow: 0 2px 10px rgba(46, 125, 50, 0.45);
+  }
+  50% {
+    box-shadow: 0 2px 18px rgba(102, 187, 106, 0.8);
+  }
+}
+
+@keyframes badge-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(0.7);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .work-badge,
+  .work-badge-dot {
+    animation: none;
+  }
+}
+
 .section-title {
   font-size: 128px;
   font-weight: bold;
@@ -474,6 +605,7 @@ export default {
 }
 
 .img-container {
+  position: relative;
   background-size: 127%;
   background-position-x: center;
   background-repeat: no-repeat;

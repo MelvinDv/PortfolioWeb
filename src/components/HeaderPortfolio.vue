@@ -13,7 +13,7 @@
         <p
           class="font-weight-bold grey--text text--lighten-2 mb-0 text-marquee"
         >
-          FRONTEND
+          DEVELOPER
         </p>
       </vue-marquee-slider>
 
@@ -76,7 +76,7 @@
         </p>
       </div>
 
-      <div class="chip-header">Frontend Developer</div>
+      <div class="chip-header">Web Developer</div>
     </v-sheet>
   </div>
 </template>
