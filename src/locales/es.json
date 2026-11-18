@@ -2,6 +2,7 @@
     "about": "Sobre m\u00ED",
     "badge-featured": "Destacado",
     "badge-wip": "En desarrollo",
+    "certifications": "Certificaciones",
     "contact": "Contactame",
     "description": {
         "paragraph_1": "Hola! soy Melvin, desarrollador web de 25 años, con mayor experiencia en front-end. Me apasiona el diseño web y me especializo en crear interfaces minimalistas, responsivas y f\u00E1ciles de usar con transiciones suaves. Mi conjunto de habilidades incluye tecnolog\u00EDas como HTML, CSS, JavaScript, Vue, Vuetify, Node.js, Figma y Git, que utilizo para dar vida a las ideas digitales.",
@@ -25,6 +26,7 @@
     "page-title": "Portfolio de Melvin Duran | Desarrollador Web",
     "require": "Campo Requerido",
     "send": "Enviar",
+    "view-credential": "Ver credencial",
     "work": "Trabajo",
     "works": {
         "landing_page_1": "Desc"

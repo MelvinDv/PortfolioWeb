@@ -9,7 +9,7 @@
 
       <v-spacer></v-spacer>
 
-      <div v-if="!$vuetify.breakpoint.xs" class="d-flex align-center">
+      <div v-if="!$vuetify.breakpoint.smAndDown" class="d-flex align-center">
         <span
           class="font-weight-medium toolbarStyle"
           @click="$scrollTo('#work')"
@@ -19,6 +19,11 @@
           class="ml-4 font-weight-medium toolbarStyle"
           @click="$scrollTo('#about')"
           >{{ $t("about") }}</span
+        >
+        <span
+          class="ml-4 font-weight-medium toolbarStyle"
+          @click="$scrollTo('#certifications')"
+          >{{ $t("certifications") }}</span
         >
         <span
           class="ml-4 font-weight-medium toolbarStyle"
@@ -51,7 +56,7 @@
       </div>
 
       <v-icon
-        v-if="$vuetify.breakpoint.xs"
+        v-if="$vuetify.breakpoint.smAndDown"
         @click="openDrawer"
         class="green--text text--darken-4"
         >fa-solid fa-bars</v-icon
@@ -77,6 +82,12 @@
             style="font-size: 24px"
             @click="goTo('#about')"
             >{{ $t("about") }}</span
+          >
+          <span
+            class="font-weight-medium toolbarStyle mb-2 text-center"
+            style="font-size: 24px"
+            @click="goTo('#certifications')"
+            >{{ $t("certifications") }}</span
           >
           <span
             class="font-weight-medium toolbarStyle mb-2 text-center"

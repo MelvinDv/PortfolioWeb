@@ -2,6 +2,7 @@
     "about": "About",
     "badge-featured": "Featured",
     "badge-wip": "Working on it",
+    "certifications": "Certifications",
     "contact": "Contact Me",
     "description": {
         "paragraph_1": "Hi! I'm Melvin, a 25-year-old Web Developer with the strongest part of my experience on the front-end. I'm passionate about web design and specialize in creating minimalistic, responsive, and user-friendly interfaces with smooth transitions. My skill set includes technologies like HTML, CSS, JavaScript, Vue, Vuetify, Node.js, Figma, and Git, which I use to bring digital ideas to life.",
@@ -25,6 +26,7 @@
     "page-title": "Melvin Duran's Portfolio | Web Developer",
     "require": "Required Field",
     "send": "Submit",
+    "view-credential": "View credential",
     "work": "Work",
     "works": {
         "landing_page_1": "Desc"

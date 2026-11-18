@@ -187,6 +187,7 @@ export default {
 
 <style>
 .section-title-contact {
+  text-align: right;
   font-size: 128px;
   font-weight: bold;
   color: #212121;

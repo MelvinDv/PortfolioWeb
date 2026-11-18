@@ -6,6 +6,8 @@
 
     <about-section />
 
+    <certifications-section />
+
     <contact-section />
 
     <footer-section />
@@ -16,6 +18,7 @@
 import HeaderPortfolio from "../components/HeaderPortfolio.vue";
 import WorkSection from "../components/WorkSection.vue";
 import AboutSection from "../components/AboutSection.vue";
+import CertificationsSection from "../components/CertificationsSection.vue";
 import ContactSection from "../components/ContactSection.vue";
 import FooterSection from "../components/FooterSection.vue";
 
@@ -26,6 +29,7 @@ export default {
     HeaderPortfolio,
     WorkSection,
     AboutSection,
+    CertificationsSection,
     ContactSection,
     FooterSection,
   },
